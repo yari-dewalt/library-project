@@ -11,6 +11,7 @@ function Book(title, author, pages, read) {
 
 document.querySelector(".form-container").style.display = "none";
 document.getElementById("book-form").style.display = "none";
+document.querySelector(".overlay").style.display = "none";
 
 const add_book = document.querySelector("#add-book");
 add_book.addEventListener("click", () => {
@@ -21,6 +22,7 @@ function openForm() {
     document.querySelector(".form-container").style.display = "flex";
     document.querySelector(".form-container").style.position = "fixed";
     document.getElementById("book-form").style.display = "flex";
+    document.querySelector(".overlay").style.display = "block";
 
     document.addEventListener("click", (event) => {
         if (!event.target.closest(".form-container") && event.target !== add_book) {
@@ -32,6 +34,7 @@ function openForm() {
 function closeForm() {
     document.querySelector(".form-container").style.display = "none";
     document.getElementById("book-form").style.display = "none";
+    document.querySelector(".overlay").style.display = "none";
 }
 
 function addBookToLibrary() {
