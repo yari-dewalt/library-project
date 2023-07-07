@@ -9,6 +9,25 @@ function Book(title, author, pages, read) {
     this.read = read; // bool
 }
 
+document.querySelector(".form-container").style.display = "none";
+document.getElementById("book-form").style.display = "none";
+
+const add_book = document.querySelector("#add-book");
+add_book.addEventListener("click", () => {
+    openForm();
+})
+
+function openForm() {
+    document.querySelector(".form-container").style.display = "flex";
+    document.querySelector(".form-container").style.position = "fixed";
+    document.getElementById("book-form").style.display = "flex";
+}
+
+function closeForm() {
+    document.querySelector(".form-container").style.display = "none";
+    document.getElementById("book-form").style.display = "none";
+}
+
 function addBookToLibrary() {
     let book_title = document.querySelector("#book-title").value;
     let book_author = document.querySelector("#book-author").value;
@@ -55,4 +74,6 @@ const submit_button = document.querySelector("#submit");
 submit_button.addEventListener("click", (event) => {
     event.preventDefault();
     addBookToLibrary();
+    document.getElementById("book-form").reset();
+    closeForm();
 })
