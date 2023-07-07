@@ -35,6 +35,7 @@ function closeForm() {
     document.querySelector(".form-container").style.display = "none";
     document.getElementById("book-form").style.display = "none";
     document.querySelector(".overlay").style.display = "none";
+    document.getElementById("book-form").reset();
 }
 
 function addBookToLibrary() {
@@ -83,7 +84,6 @@ const submit_button = document.querySelector("#submit");
 submit_button.addEventListener("click", (event) => {
     if (checkValid() === true) {
         addBookToLibrary();
-        document.getElementById("book-form").reset();
         closeForm();
     }
 })
@@ -93,13 +93,30 @@ function checkValid() {
     let inputs = document.querySelectorAll("input");
 
     inputs.forEach(input => {
-        if (input.value === "" && input.type !== "checkbox") {
-            valid = false;
-        }
+        switch (input.type) {
+            case "text":
+                if (input.value === "") {
+                    valid = false;
+                }
 
-        else if (input.type !== "checkbox") {
-            valid = true;
-        }
+                else {
+                    valid = true;
+                }
+
+            case "number":
+                if (input.value <= 0) {
+                    valid = false;
+                }
+
+                else {
+                    valid = true;
+                }
+            
+            case "checkbox":
+                if (valid) {
+                    valid = true;
+                }
+            }
     })
 
     return valid;
