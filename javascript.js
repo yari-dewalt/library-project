@@ -72,8 +72,27 @@ function addBookToLibrary() {
 const submit_button = document.querySelector("#submit");
 
 submit_button.addEventListener("click", (event) => {
-    event.preventDefault();
-    addBookToLibrary();
-    document.getElementById("book-form").reset();
-    closeForm();
+    //event.preventDefault();
+    if (checkValid() === true) {
+        addBookToLibrary();
+        document.getElementById("book-form").reset();
+        closeForm();
+    }
 })
+
+function checkValid() {
+    let valid = false;
+    let inputs = document.querySelectorAll("input");
+
+    inputs.forEach(input => {
+        if (input.value === "" && input.type !== "checkbox") {
+            valid = false;
+        }
+
+        else if (input.type !== "checkbox") {
+            valid = true;
+        }
+    })
+
+    return valid;
+}
