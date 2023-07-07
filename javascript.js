@@ -64,10 +64,34 @@ function addBookToLibrary() {
     `<h2 class="book-title">${book.title}</h2>
     <p class="author">${book.author}</p>
     <p class="pages">${book.pages}</p>
-    <p class="read">${read}</p>
-    <button class="remove" id="${bookCount}">Remove</button>`;
+    <button class="read">${read}</button>
+    <button class="remove">Remove</button>`;
     
     books_container.appendChild(div);
+
+    const read_buttons = document.querySelectorAll(".read");
+
+    read_buttons.forEach(button => {
+        if (button.textContent === "Not Read") {
+            button.classList.remove("read");
+            button.classList.add("not-read");
+        }
+        button.addEventListener("click", (event) => {
+            event.stopImmediatePropagation();
+            if (button.textContent === "Read") {
+                button.textContent = "Not Read";
+                button.classList.remove("read");
+                button.classList.add("not-read");
+            }
+
+            else if (button.textContent === "Not Read") {
+                button.textContent = "Read";
+                button.classList.remove("not-read");
+                button.classList.add("read");
+            }
+            console.log(button.className);
+        })
+    })
 
     let remove_buttons = document.querySelectorAll(".remove");
 
