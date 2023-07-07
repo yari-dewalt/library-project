@@ -21,6 +21,12 @@ function openForm() {
     document.querySelector(".form-container").style.display = "flex";
     document.querySelector(".form-container").style.position = "fixed";
     document.getElementById("book-form").style.display = "flex";
+
+    document.addEventListener("click", (event) => {
+        if (!event.target.closest(".form-container") && event.target !== add_book) {
+            closeForm();
+        }
+    })
 }
 
 function closeForm() {
@@ -72,7 +78,6 @@ function addBookToLibrary() {
 const submit_button = document.querySelector("#submit");
 
 submit_button.addEventListener("click", (event) => {
-    //event.preventDefault();
     if (checkValid() === true) {
         addBookToLibrary();
         document.getElementById("book-form").reset();
