@@ -1,4 +1,5 @@
 let myLibrary = [];
+let bookCount = 0;
 const books_container = document.querySelector(".books-container");
 
 function Book(title, author, pages, read) {
@@ -14,10 +15,10 @@ function addBookToLibrary() {
     let book_pages = document.querySelector("#book-pages").value;
     let read = document.querySelector("#read").checked;
 
-    console.log(read);
-
     let book = new Book(book_title, book_author, book_pages, read);
     myLibrary.push(book);
+
+    bookCount++;
 
     if (read === true) {
         read = "Read";
@@ -29,22 +30,29 @@ function addBookToLibrary() {
 
     const div = document.createElement("div");
     div.className = "book-card";
+    div.id = `book-${bookCount}`;
     div.innerHTML =
     `<h2 class="book-title">${book.title}</h2>
-                <p class="author">${book.author}</p>
-                <p class="pages">${book.pages}</p>
-                <p class="read">${read}`;
+    <p class="author">${book.author}</p>
+    <p class="pages">${book.pages}</p>
+    <p class="read">${read}</p>
+    <button class="remove" id="${bookCount}">Remove</button>`;
     
     books_container.appendChild(div);
 
-    addBooks(myLibrary, books_container);
+    let remove_buttons = document.querySelectorAll(".remove");
 
+    remove_buttons.forEach(button => {
+        button.addEventListener("click", () => {         
+            currentBook = button.parentElement;
+            books_container.removeChild(currentBook);
+        })
+    })
 }
 
-// on button click call addbook function
-const add_book_button = document.querySelector("#submit");
+const submit_button = document.querySelector("#submit");
 
-add_book_button.addEventListener("click", (event) => {
+submit_button.addEventListener("click", (event) => {
     event.preventDefault();
     addBookToLibrary();
 })
