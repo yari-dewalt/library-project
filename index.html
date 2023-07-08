@@ -16,19 +16,17 @@
         <h1>Library</h1>
     </div>
     <button id="add-book">+ Add Book</button>
-    <div class="main-container">
-        <div class="books-container"></div>
-    </div>
+    <div class="books-container"></div>
     <div class="form-container">
         <form action="" id="book-form">
-            <label for="book-title">Book Title</label>
-            <input type="text" name="title" id="book-title" required>
-            <label for="book-author">Author</label>
-            <input type="text" name="author" id="book-author" required>
-            <label for="book-pages">Pages</label>
-            <input type="number" name="pages" id="book-pages" min="1" required>
-            <label for="read">Already read?</label>
-            <input type="checkbox" id="read" value="true"></input>
+            <h3>Add new book</h3>
+            <input type="text" name="title" id="book-title" placeholder="Title" required>
+            <input type="text" name="author" id="book-author" placeholder="Author" required>
+            <input type="number" name="pages" id="book-pages" min="1" placeholder="Pages" required>
+            <div>
+                <label for="read">Already Read?</label>
+                <input type="checkbox" id="read" value="true"></input>
+            </div>
             <button type="submit" id="submit">Submit</button>
         </form>
     </div>
