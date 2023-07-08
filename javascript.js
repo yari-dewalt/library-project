@@ -63,7 +63,7 @@ function addBookToLibrary() {
     div.innerHTML =
     `<h2 class="book-title">${book.title}</h2>
     <p class="author">${book.author}</p>
-    <p class="pages">${book.pages}</p>
+    <p class="pages">${book.pages} pages</p>
     <button class="read">${read}</button>
     <button class="remove">Remove</button>`;
     
